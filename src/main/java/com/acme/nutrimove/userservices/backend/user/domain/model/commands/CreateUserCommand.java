@@ -8,5 +8,6 @@ public record CreateUserCommand(
         String lastname,
         String email,
         String password,
-        Privacy privacy
+        Privacy privacy,
+        String suscription
 ) {}

@@ -9,6 +9,7 @@ import com.acme.nutrimove.userservices.backend.user.domain.services.UserQuerySer
 import com.acme.nutrimove.userservices.backend.user.interfaces.rest.resources.CreateUserResource;
 import com.acme.nutrimove.userservices.backend.user.interfaces.rest.resources.UpdateUserResource;
 import com.acme.nutrimove.userservices.backend.user.interfaces.rest.resources.UserResource;
+import com.acme.nutrimove.userservices.backend.user.interfaces.rest.resources.UserSubscriptionResource;
 import com.acme.nutrimove.userservices.backend.user.interfaces.rest.transform.CreateUserCommandFromResourceAssembler;
 import com.acme.nutrimove.userservices.backend.user.interfaces.rest.transform.UpdateUserCommandFromResourceAssembler;
 import com.acme.nutrimove.userservices.backend.user.interfaces.rest.transform.UserResourceFromEntityAssembler;
@@ -112,4 +113,27 @@ public class UserController {
             return ResponseEntity.notFound().build();
         }
     }
+    @PutMapping("/update-subscription")
+    public ResponseEntity<?> updateUserSubscription(@RequestBody UserSubscriptionResource resource) {
+        if (resource.getUserId() == null || resource.getSubscriptionId() == null) {
+            return ResponseEntity.badRequest().body("userId and subscriptionId are required.");
+        }
+
+        Optional<User> optionalUser = userQueryService.handle(new GetUserByIdQuery(resource.getUserId()));
+        if (optionalUser.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        User user = optionalUser.get();
+        user.setSubscription(resource.getSubscriptionId().toString()); // o setSuscriptionId si es Long
+
+        try {
+            userCommandService.updateUser(user); // Asumiendo que este método guarda el cambio
+            return ResponseEntity.ok("Subscription updated for user " + user.getId());
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("Error updating subscription: " + e.getMessage());
+        }
+    }
+
+
 }

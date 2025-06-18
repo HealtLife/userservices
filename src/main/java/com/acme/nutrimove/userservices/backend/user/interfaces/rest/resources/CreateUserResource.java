@@ -7,7 +7,8 @@ public record CreateUserResource(
         String lastname,
         String email,
         String password,
-        Privacy privacy
+        Privacy privacy,
+        String suscription
 ) {
     public CreateUserResource {
         if (name == null) throw new NullPointerException("name cannot be null");
@@ -15,5 +16,6 @@ public record CreateUserResource(
         if (email == null) throw new NullPointerException("email cannot be null");
         if (password == null) throw new NullPointerException("password cannot be null");
         if (privacy == null) throw new NullPointerException("privacy cannot be null");
+        if (suscription == null) throw new NullPointerException("suscription cannot be null");
     }
 }

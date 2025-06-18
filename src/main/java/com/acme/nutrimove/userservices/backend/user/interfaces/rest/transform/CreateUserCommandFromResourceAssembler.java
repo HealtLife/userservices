@@ -12,7 +12,8 @@ public class CreateUserCommandFromResourceAssembler {
                 resource.lastname(),
                 resource.email(),
                 resource.password(),
-                resource.privacy()
+                resource.privacy(),
+                resource.suscription()
         );
     }
 }

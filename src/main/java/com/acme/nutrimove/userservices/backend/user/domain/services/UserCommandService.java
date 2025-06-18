@@ -11,4 +11,6 @@ public interface UserCommandService {
     Optional<User> handle(CreateUserCommand command);
     void handle(DeleteUserCommand command);
     Optional<User> handle(UpdateUserCommand command); // Nuevo método para actualizar el usuario
+    void updateUser(User user);
+
 }

@@ -51,4 +51,9 @@ public class UserCommandServiceImpl implements UserCommandService {
         });
     }
 
+    @Override
+    public void updateUser(User user) {
+        userRepository.save(user);
+    }
+
 }

@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 @Getter
 @Entity
 @EntityListeners(AuditingEntityListener.class)
+@Table(name = "users")
 public class User {
 
     @Id
@@ -46,15 +47,9 @@ public class User {
     @Column(nullable = false)
     private Privacy privacy;
 
-    // Relaciones externas eliminadas
-    @Transient
-    private Object subscription;
-
-    @Transient
-    private Object foods;
-
-    @Transient
-    private Object hydrations;
+    @Getter
+    @Setter
+    private String subscription;
 
     public User(CreateUserCommand command) {
         this.name = command.name();
@@ -63,6 +58,7 @@ public class User {
         this.password = command.password();
         this.privacy = command.privacy();
         this.createdAt = LocalDateTime.now();
+        this.subscription = "no suscribed";
     }
 
     public User() {}
