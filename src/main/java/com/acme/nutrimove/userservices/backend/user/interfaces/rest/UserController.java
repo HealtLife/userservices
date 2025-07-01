@@ -26,6 +26,7 @@ import java.util.Optional;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(value = "api/v1/users", produces = APPLICATION_JSON_VALUE)
 @Tag(name = "Users", description = "Operations related to Users")
