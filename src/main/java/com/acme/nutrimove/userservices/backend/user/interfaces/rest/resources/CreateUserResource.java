@@ -1,21 +1,59 @@
 package com.acme.nutrimove.userservices.backend.user.interfaces.rest.resources;
 
-import com.acme.nutrimove.userservices.backend.user.domain.ValueObjects.Privacy;
+public class CreateUserResource {
+    private String name;
+    private String lastname;
+    private String email;
+    private String password;
+    private String privacy;
+    private String subscription;  // Relación con la suscripción, puede ser el ID de la suscripción
 
-public record CreateUserResource(
-        String name,
-        String lastname,
-        String email,
-        String password,
-        Privacy privacy,
-        String suscription
-) {
-    public CreateUserResource {
-        if (name == null) throw new NullPointerException("name cannot be null");
-        if (lastname == null) throw new NullPointerException("lastname cannot be null");
-        if (email == null) throw new NullPointerException("email cannot be null");
-        if (password == null) throw new NullPointerException("password cannot be null");
-        if (privacy == null) throw new NullPointerException("privacy cannot be null");
-        if (suscription == null) throw new NullPointerException("suscription cannot be null");
+    // Getters y setters
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPrivacy() {
+        return privacy;
+    }
+
+    public void setPrivacy(String privacy) {
+        this.privacy = privacy;
+    }
+
+    public String getSubscription() {
+        return subscription;
+    }
+
+    public void setSubscription(String subscription) {
+        this.subscription = subscription;
     }
 }

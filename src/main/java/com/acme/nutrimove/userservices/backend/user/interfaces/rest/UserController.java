@@ -98,7 +98,6 @@ public class UserController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-
     @Operation(summary = "Delete a user", description = "Delete a user by its ID")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "204", description = "User deleted"),
@@ -114,6 +113,8 @@ public class UserController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    // Método para actualizar la suscripción de un usuario
     @PutMapping("/update-subscription")
     public ResponseEntity<?> updateUserSubscription(@RequestBody UserSubscriptionResource resource) {
         if (resource.getUserId() == null || resource.getSubscriptionId() == null) {
@@ -135,6 +136,4 @@ public class UserController {
             return ResponseEntity.internalServerError().body("Error updating subscription: " + e.getMessage());
         }
     }
-
-
 }
