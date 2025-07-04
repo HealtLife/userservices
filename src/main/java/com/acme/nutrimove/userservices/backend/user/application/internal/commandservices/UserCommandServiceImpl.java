@@ -23,6 +23,7 @@ public class UserCommandServiceImpl implements UserCommandService {
     @Override
     public Optional<User> handle(CreateUserCommand command) {
         // Validación para evitar duplicidad de usuarios por email
+        // Validación para evitar duplicidad de usuarios por email
         if (userRepository.existsByEmail(command.email())) {
             throw new IllegalArgumentException("User with the same email already exists");
         }
