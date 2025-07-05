@@ -8,12 +8,12 @@ public class CreateUserCommandFromResourceAssembler {
 
     public static CreateUserCommand toCommand(CreateUserResource resource) {
         return new CreateUserCommand(
-                resource.name(),
-                resource.lastname(),
-                resource.email(),
-                resource.password(),
-                resource.privacy(),
-                resource.suscription()
+                resource.getName(),
+                resource.getLastname(),
+                resource.getEmail(),
+                resource.getPassword(),
+                resource.getPrivacy(),
+                resource.getSubscription()
         );
     }
 }

@@ -56,7 +56,7 @@ public class User {
         this.lastname = command.lastname();
         this.email = command.email();
         this.password = command.password();
-        this.privacy = command.privacy();
+        this.privacy = Privacy.valueOf(command.privacy());
         this.createdAt = LocalDateTime.now();
         this.subscription = "no suscribed";
     }

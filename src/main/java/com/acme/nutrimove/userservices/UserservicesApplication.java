@@ -11,7 +11,7 @@ import java.sql.*;
 public class UserservicesApplication {
 
     public static void main(String[] args) {
-        createDatabaseIfNotExists("jdbc:postgresql://localhost:5432/", "postgres", "12345678", "nutrimove_userservice");
+        createDatabaseIfNotExists("jdbc:postgresql://localhost:5432/", "postgres", "renato", "nutrimove_userservice");
         SpringApplication.run(UserservicesApplication.class, args);
     }
     private static void createDatabaseIfNotExists(String url, String user, String password, String dbName) {
